@@ -5,9 +5,9 @@ namespace Octomated\VcomApi;
 use meteocontrol\client\vcomapi\ApiClient;
 use meteocontrol\client\vcomapi\Config;
 use meteocontrol\client\vcomapi\Factory;
+use Octomated\VcomApi\Commands\VcomApiGetSystemsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Octomated\VcomApi\Commands\VcomApiGetSystemsCommand;
 
 class VcomApiServiceProvider extends PackageServiceProvider
 {

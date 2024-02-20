@@ -17,13 +17,14 @@ class VcomApiGetSystemsCommand extends Command
         try {
             $systems = collect($vcomApi->client()->systems()->get());
 
-            $headers = array_flip((array)$systems->first->jsonSerialize());
+            $headers = array_flip((array) $systems->first->jsonSerialize());
             $rows = $systems->map(fn (System $system) => $system->jsonSerialize())->toArray();
             $this->table($headers, $rows);
 
             return self::SUCCESS;
         } catch (\Throwable $throwable) {
             $this->error($throwable->getMessage());
+
             return self::FAILURE;
         }
     }
