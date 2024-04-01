@@ -15,7 +15,7 @@ class VcomApiGetSystemsCommand extends Command
     public function handle(VcomApi $vcomApi): int
     {
         try {
-            $systems = collect($vcomApi->client()->systems()->get());
+            $systems = collect($vcomApi->systems()->get());
 
             $headers = array_flip((array) $systems->first->jsonSerialize());
             $rows = $systems->map(fn (System $system) => $system->jsonSerialize())->toArray();
