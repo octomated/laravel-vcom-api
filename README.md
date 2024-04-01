@@ -15,13 +15,13 @@ You can install the package via composer:
 composer require octomated/laravel-vcom-api
 ```
 
-You can publish the config file with:
+You can optionally publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="laravel-vcom-api-config"
 ```
 
-This is the contents of the published config file:
+The contents of the published config file:
 
 ```php
 return [
@@ -33,17 +33,20 @@ return [
 ];
 ```
 
-Set your username, password and api key in your environment and you're good to go.
+Install this package, set your username, password and api key in your environment file, and you're good to go.
+```bash
+MC_VCOM_API_USERNAME=
+MC_VCOM_API_PASSWORD=
+MC_VCOM_API_KEY=
+```
 
 ## Usage
 
 ```php
-$vcomApi = Octomated\VcomApi::client();
-// or
 // let the dependency injection take care of resolving and configuring your VCOM-API client
-// __construct(Octomated\VcomApi $vcomApi)
-
-dump($vcomApi->client()->systems()->get());
+// __construct(VcomApi $vcomApi)
+// or make use of the facade for quick access
+dump(VcomApi::systems()->get());
 
 ```
 
