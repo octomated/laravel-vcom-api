@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Octomated\VcomApi;
 
 use meteocontrol\client\vcomapi\ApiClient;
@@ -26,7 +28,7 @@ class VcomApiServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        $this->app->bind(ApiClient::class, function () {
+        $this->app->singleton(VcomApi::class, function (): VcomApi {
             $config = new Config();
             $config->setApiUrl(config('vcom-api.url'));
             $config->setApiUsername(config('vcom-api.username'));
@@ -35,10 +37,10 @@ class VcomApiServiceProvider extends PackageServiceProvider
             $config->setApiAuthorizationMode(config('vcom-api.auth_mode'));
             $config->validate();
 
-            return new ApiClient(
+            return new VcomApi(new ApiClient(
                 Factory::getHttpClient($config),
                 Factory::getAuthorizationHandler($config)
-            );
+            ));
         });
     }
 }

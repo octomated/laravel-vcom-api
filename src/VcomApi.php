@@ -3,15 +3,19 @@
 namespace Octomated\VcomApi;
 
 use meteocontrol\client\vcomapi\ApiClient;
+use meteocontrol\client\vcomapi\endpoints\main\Systems;
 
-class VcomApi
+/**
+ * @method Systems systems()
+ */
+readonly class VcomApi
 {
-    public function __construct(private readonly ApiClient $apiClient)
+    public function __construct(private ApiClient $apiClient)
     {
     }
 
-    public function client(): ApiClient
+    public function __call($method, $parameters): mixed
     {
-        return $this->apiClient;
+        return $this->apiClient->$method(...$parameters);
     }
 }
