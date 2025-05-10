@@ -18,7 +18,7 @@ composer require octomated/laravel-vcom-api
 You can optionally publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-vcom-api-config"
+php artisan vendor:publish --tag="vcom-api-config"
 ```
 
 The contents of the published config file:
