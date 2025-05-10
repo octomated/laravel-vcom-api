@@ -29,7 +29,7 @@ class VcomApiServiceProvider extends PackageServiceProvider
     public function packageRegistered(): void
     {
         $this->app->singleton(VcomApi::class, function (): VcomApi {
-            $config = new Config();
+            $config = new Config;
             $config->setApiUrl(config('vcom-api.url'));
             $config->setApiUsername(config('vcom-api.username'));
             $config->setApiPassword(config('vcom-api.password'));

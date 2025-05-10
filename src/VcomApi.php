@@ -24,9 +24,7 @@ use meteocontrol\client\vcomapi\endpoints\sub\tickets\Ticket;
  */
 readonly class VcomApi
 {
-    public function __construct(private ApiClient $apiClient)
-    {
-    }
+    public function __construct(private ApiClient $apiClient) {}
 
     public function __call($method, $parameters): mixed
     {

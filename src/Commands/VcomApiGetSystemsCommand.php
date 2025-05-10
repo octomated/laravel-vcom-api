@@ -3,7 +3,7 @@
 namespace Octomated\VcomApi\Commands;
 
 use Illuminate\Console\Command;
-use meteocontrol\vcomapi\model\System;
+use meteocontrol\client\vcomapi\model\System;
 use Octomated\VcomApi\VcomApi;
 
 class VcomApiGetSystemsCommand extends Command
